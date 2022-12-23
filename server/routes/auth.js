@@ -22,8 +22,8 @@ router.post("/register", async (req, res) => {
 
     const user = await newUser.save();
     res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
@@ -36,15 +36,15 @@ router.post("/login", async (req, res) => {
       req.body.password,
       user.password
     );
+
     if (!validPassword) {
       res.status(403).send("Invalid password!");
     } else {
-      res.status(200).json(user)
+      res.status(200).json(user);
     }
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
